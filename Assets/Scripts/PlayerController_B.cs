@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController_B : MonoBehaviour
 {
-
+    public Collider c;
     public LayerMask whatStopsMovement;
     public Transform movePoint;
     public float speed;
@@ -40,14 +40,14 @@ public class PlayerController_B : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow)) dirHor = -1;
             if (Mathf.Abs(dirHor)==1f)
             {
-                //if (Physics.OverlapSphere(movePoint.position + new Vector3(dirHor, 0f, 0f)+ new Vector3(0f, 0f, -1f), .2f, 1 << LayerMask.NameToLayer("whatStopsMovement")) == null)
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(dirHor, 0f, 0f) , 0.9f,  whatStopsMovement))
                 {
                     movePoint.position += new Vector3(dirHor, 0f, 0f);
                 }
             }
             else if(Mathf.Abs(dirVer)==1f)
             {
-                //if (Physics.OverlapSphere(movePoint.position + new Vector3(dirVer, 0f, 0f)+ new Vector3(0f, 0f, -1f), .2f, 1<<LayerMask.NameToLayer("whatStopsMovement"))==null)
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, dirVer, 0f) , .9f,  whatStopsMovement) )
                 {
                     movePoint.position += new Vector3(0f, dirVer, 0f);
                 }
