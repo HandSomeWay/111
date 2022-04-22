@@ -12,13 +12,14 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;//跳跃的力
     public float gravity;//重力
     public bool isGround;//是否在地面
+
     void Awake() 
    {
         //获取组件
         rb1=GetComponent<Rigidbody>();
     }
-// Start is called before the first frame update
-void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         
     }
@@ -31,7 +32,6 @@ void Start()
     }
     void FixedUpdate()
     {
-
         GroundMovement();
     }
     private void OnTriggerStay(Collider other)
