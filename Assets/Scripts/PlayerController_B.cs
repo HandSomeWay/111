@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerController_B : MonoBehaviour
 {
-    public Collider c;
-    public LayerMask whatStopsMovement;
-    public Transform movePoint;
+    private Rigidbody rb;
+
     public float speed;
     // Start is called before the first frame update
     void Awake()
     {
-        movePoint.parent = null;
+        //获取组件
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -29,29 +29,12 @@ public class PlayerController_B : MonoBehaviour
     }
     void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-        if(Vector3.Distance(transform.position,movePoint.position)<=0.5f)
-        {
-            int dirVer, dirHor;
-            dirVer = dirHor = 0;
-            if (Input.GetKey(KeyCode.UpArrow)) dirVer = 1;
-            else if (Input.GetKey(KeyCode.DownArrow)) dirVer = -1;
-            if (Input.GetKey(KeyCode.RightArrow)) dirHor = 1;
-            if (Input.GetKey(KeyCode.LeftArrow)) dirHor = -1;
-            if (Mathf.Abs(dirHor)==1f)
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(dirHor, 0f, 0f) , 0.9f,  whatStopsMovement))
-                {
-                    movePoint.position += new Vector3(dirHor, 0f, 0f);
-                }
-            }
-            else if(Mathf.Abs(dirVer)==1f)
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, dirVer, 0f) , .9f,  whatStopsMovement) )
-                {
-                    movePoint.position += new Vector3(0f, dirVer, 0f);
-                }
-            }
-        }
+        int dirVer = 0;
+        int dirHor = 0;
+        if (Input.GetKey(KeyCode.UpArrow)) dirVer = 1;
+        else if (Input.GetKey(KeyCode.DownArrow)) dirVer = -1;
+        if (Input.GetKey(KeyCode.RightArrow)) dirHor = 1;
+        if (Input.GetKey(KeyCode.LeftArrow)) dirHor = -1;
+        rb.velocity = new Vector3(dirHor * speed, dirVer*speed,rb.velocity.z);//移动
     }
 }

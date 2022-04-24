@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb1; 
-    
+    private Rigidbody rb1;
+    private Animator Amt;
 
+    public GameObject Model_A;
     public float speed;//移动速度
     public float accspeed;//加速度
     public float jumpForce;//跳跃的力
@@ -17,18 +18,19 @@ public class PlayerController : MonoBehaviour
    {
         //获取组件
         rb1=GetComponent<Rigidbody>();
+        Amt = Model_A.GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
             Jump();
+        AnimationChg();
     }
     void FixedUpdate()
     {
@@ -46,12 +48,16 @@ public class PlayerController : MonoBehaviour
     }
     void GroundMovement()
     {
-        int horizontalmove = 0;
-        if (Input.GetKey(KeyCode.A)) horizontalmove = -1;
-        else if (Input.GetKey(KeyCode.D)) horizontalmove = 1;
-        rb1.velocity = new Vector2(horizontalmove * speed, rb1.velocity.y);//移动
+        int dirHor = 0;
+        if (Input.GetKey(KeyCode.A)) dirHor = -1;
+        else if (Input.GetKey(KeyCode.D)) dirHor = 1;
+        if (dirHor == 1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        if (dirHor == -1) transform.rotation = Quaternion.Euler(new Vector3(0f, -180f, 0f));
+        if (dirHor != 0) Amt.SetBool("Move", true);
+        else Amt.SetBool("Move", false);
+        rb1.velocity = new Vector2(dirHor  * speed, rb1.velocity.y);//移动
         if (Input.GetKey("left shift"))
-            rb1.velocity = new Vector2(horizontalmove * speed * accspeed, rb1.velocity.y);//shift加速
+            rb1.velocity = new Vector2(dirHor * speed * accspeed, rb1.velocity.y);//shift加速
     }
     void Jump()
     {
@@ -59,11 +65,9 @@ public class PlayerController : MonoBehaviour
             rb1.velocity= new Vector2(rb1.velocity.x, jumpForce);//跳跃
         isGround = false;
     }
-    //void Gravity()
-    //{
-    //    if(!isGround)
-    //    {
-    //        rb1.velocity = new Vector2(rb1.velocity.x, gravity);
-    //    }
-    //}
+    void AnimationChg()
+    {
+        Amt.SetFloat("Speed", Mathf.Abs(rb1.velocity.x));
+        Amt.SetFloat("Jump", rb1.velocity.y);
+    }
 }
