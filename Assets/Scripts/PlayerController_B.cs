@@ -55,4 +55,10 @@ public class PlayerController_B : MonoBehaviour
     {
         Amt.SetFloat("Speed", Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y));
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Ground")
+            Amt.SetBool("Push", true);
+        else Amt.SetBool("Push", false);
+    }
 }
