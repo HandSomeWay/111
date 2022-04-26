@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Model_A;
     public float speed;//移动速度
-    public float accspeed;//加速度
     public float jumpForce;//跳跃的力
     public float gravity;//重力
     public bool isGround;//是否在地面
@@ -56,8 +55,6 @@ public class PlayerController : MonoBehaviour
         if (dirHor != 0) Amt.SetBool("Move", true);
         else Amt.SetBool("Move", false);
         rb1.velocity = new Vector2(dirHor  * speed, rb1.velocity.y);//移动
-        if (Input.GetKey("left shift"))
-            rb1.velocity = new Vector2(dirHor * speed * accspeed, rb1.velocity.y);//shift加速
     }
     void Jump()
     {
