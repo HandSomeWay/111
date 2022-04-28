@@ -8,12 +8,12 @@ public class Sign : MonoBehaviour
     public Text dialogBox;
     void Start()
     {
-        dialogBox.text = "快到我这来~\n按下A或D左右移动";
+        dialogBox.text = "快到我这来~按下A或D左右移动";
     }
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
     
     private void OnTriggerEnter(Collider other)
@@ -21,7 +21,7 @@ public class Sign : MonoBehaviour
         if (other.tag == "NPC")
         {
             Debug.Log("Enter");
-            dialogBox.text = "试试跳跃【J】吧";
+            dialogBox.text = "试试按下J跳过箱子吧";
             if (Input.GetKey(KeyCode.J))
                 dialogBox.text = "Bravo!";
         }
@@ -34,6 +34,7 @@ public class Sign : MonoBehaviour
             Debug.Log("Exit");
             dialogBox.text = "";
         }
+
     }
     
 }
