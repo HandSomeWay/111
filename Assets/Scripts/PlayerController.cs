@@ -6,11 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb1;
     private Animator Amt;
+    public bool Crouch;
 
+    public Collider capsule;
     public GameObject Model_A;
     public float speed;//移动速度
     public float jumpForce;//跳跃的力
-    public float gravity;//重力
     public bool isGround;//是否在地面
 
     void Awake() 
@@ -22,11 +23,24 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        speed = 5f;
+        Crouch = false;
     }
     // Update is called once per frame
     void Update()
     {
+        if (Crouch)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+            speed = 2.5f;
+        }
+        else speed = 5f;
+            if (Input.GetKeyDown(KeyCode.C))
+        {
+            Crouch = !Crouch;
+        }
+        capsule.isTrigger = Crouch;
+        Amt.SetBool("Crouch", Crouch);
         if (Input.GetKeyDown(KeyCode.J))
             Jump();
         AnimationChg();

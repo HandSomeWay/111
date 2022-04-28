@@ -102,7 +102,7 @@ public class EnemyController : MonoBehaviour
                 enemy1.transform.localRotation = Quaternion.Euler(0, -90 - angle, 0);
             } 
             transform.Translate(direction.normalized * Time.deltaTime * 1.5f * speed, Space.World);
-            if (direction.magnitude > 8f)
+            if (direction.magnitude > 6f)
             {
                 flag = false;
             }

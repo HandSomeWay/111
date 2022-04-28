@@ -143,6 +143,8 @@ MonoBehaviour:
   SunLight: {fileID: 2470105277024169748}
   PlayerA: {fileID: 0}
   PlayerB: {fileID: 0}
+  MdAT: {fileID: 0}
+  MdBT: {fileID: 0}
   PA: {fileID: 0}
   PB: {fileID: 0}
   PAT: {fileID: 0}
