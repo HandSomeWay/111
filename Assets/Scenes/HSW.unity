@@ -3542,10 +3542,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 347307574090223325, guid: f429e9c2f27c1c748906be94fb960cb1, type: 3}
-      propertyPath: JumpForce
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 347307574090223326, guid: f429e9c2f27c1c748906be94fb960cb1, type: 3}
       propertyPath: m_Name
       value: JumpPoint
@@ -3606,14 +3602,6 @@ PrefabInstance:
     - target: {fileID: 4285584683780404140, guid: 3cdacdc339d0f514cb605df80c5517ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285584683780404142, guid: 3cdacdc339d0f514cb605df80c5517ca, type: 3}
-      propertyPath: m_Drag
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285584683780404142, guid: 3cdacdc339d0f514cb605df80c5517ca, type: 3}
-      propertyPath: m_AngularDrag
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cdacdc339d0f514cb605df80c5517ca, type: 3}
