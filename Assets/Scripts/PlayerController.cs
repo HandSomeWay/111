@@ -35,6 +35,14 @@ public class PlayerController : MonoBehaviour
     {
         GroundMovement();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Trap")
+        {
+            Amt.SetTrigger("Dead");
+            ModeController.GameOver = true;
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Ground")

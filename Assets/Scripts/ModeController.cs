@@ -24,6 +24,7 @@ public class ModeController : MonoBehaviour
     }
     private void Update()
     {
+        if (GameOver) Debug.Log("GameOver!");
         if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("GameMode Changed!");
