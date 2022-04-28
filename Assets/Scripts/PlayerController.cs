@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb1;
     private Animator Amt;
+    private bool Crouch;
 
+    public Collider capsule;
     public GameObject Model_A;
     public float speed;//移动速度
     public float jumpForce;//跳跃的力
@@ -22,11 +24,18 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Crouch = false;
     }
     // Update is called once per frame
     void Update()
     {
+        if(Crouch) transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Crouch = !Crouch;
+            capsule.isTrigger = !capsule.isTrigger;
+            Amt.SetBool("Crouch", Crouch);
+        }
         if (Input.GetKeyDown(KeyCode.J))
             Jump();
         AnimationChg();
