@@ -13,6 +13,8 @@ public class ModeController : MonoBehaviour
     public Light SunLight;
     public GameObject PlayerA;
     public GameObject PlayerB;
+    public GameObject MdAT;
+    public GameObject MdBT;
     public Transform PA;
     public Transform PB;
     public Transform PAT;
@@ -38,6 +40,8 @@ public class ModeController : MonoBehaviour
         {
             PAT.parent = PA;
             PBT.parent = null;
+            MdAT.active = false;
+            MdBT.active = true;
             PlayerB.active = false;
             PlayerA.active = true;
         }
@@ -45,6 +49,8 @@ public class ModeController : MonoBehaviour
         {
             PAT.parent = null;
             PBT.parent = PB;
+            MdAT.active = true;
+            MdBT.active = false;
             PlayerA.active = false;
             PlayerB.active = true;
         }
