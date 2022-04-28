@@ -57,7 +57,7 @@ public class PlayerController_B : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.tag);
+        //Debug.Log(other.tag);
         if (other.tag == "Ground")
             Amt.SetBool("Push", true);
     }

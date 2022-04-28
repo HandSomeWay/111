@@ -7,7 +7,9 @@ public class ModeController : MonoBehaviour
     static public bool ModeX;//游戏模式
     static public bool GameOver;//游戏失败
     static public bool Victory;//游戏胜利
+
     private int i;
+
     public Light SunLight;
     public GameObject PlayerA;
     public GameObject PlayerB;
@@ -24,6 +26,7 @@ public class ModeController : MonoBehaviour
     }
     private void Update()
     {
+        if (Victory) Debug.Log("Victory!");
         if (GameOver) Debug.Log("GameOver!");
         if (Input.GetKeyDown(KeyCode.X))
         {

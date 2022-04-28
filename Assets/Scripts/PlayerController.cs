@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        if (other.tag == "Finish")
+            ModeController.Victory = true;
         if (other.tag == "Ground")
             isGround = true;
     }
