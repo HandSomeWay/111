@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Sign : MonoBehaviour
 {
     public Text dialogBox;
+    public GameObject image;
     void Start()
     {
         dialogBox.text = "快到我这来~按下A或D左右移动";
@@ -16,11 +17,12 @@ public class Sign : MonoBehaviour
       
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "NPC")
         {
             Debug.Log("Enter");
+            image.SetActive(true);
             dialogBox.text = "试试按下J跳过箱子吧";
             if (Input.GetKey(KeyCode.J))
                 dialogBox.text = "Bravo!";
@@ -31,6 +33,7 @@ public class Sign : MonoBehaviour
     {
         if (other.tag == "NPC")
         {
+            image.SetActive(false);
             Debug.Log("Exit");
             dialogBox.text = "";
         }
