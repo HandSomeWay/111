@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    Animator animator;
     private Rigidbody rb;
     private bool flag = false;
     public GameObject play1;
@@ -29,6 +30,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = enemy1.GetComponent<Animator>();
     }
 
     void Update()
@@ -54,10 +56,13 @@ public class EnemyController : MonoBehaviour
                     GameOver();
                 }
                 speed = 0f;
+                animator.ResetTrigger("find1");
+                animator.SetTrigger("find");
             }
             else
             {
                 speed = 1f;
+                animator.SetTrigger("find1");
                 if (value > 0f)
                 {
                     value -= 0.0002f;

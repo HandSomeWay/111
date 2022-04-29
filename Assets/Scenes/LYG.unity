@@ -10833,7 +10833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb520535ddcb47743979be8f7b41d717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  play1: {fileID: 0}
+  play1: {fileID: 1578759208}
   play2: {fileID: 1127747634}
   enemy1: {fileID: 638802586}
   rayhit: {fileID: 342122921}
