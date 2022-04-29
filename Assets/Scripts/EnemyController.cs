@@ -55,7 +55,8 @@ public class EnemyController : MonoBehaviour
                 {
                     GameOver();
                 }
-                speed = 0f;
+                if (ModeController.ModeX)
+                    speed = 0f;
                 animator.ResetTrigger("find1");
                 animator.SetTrigger("find");
             }
