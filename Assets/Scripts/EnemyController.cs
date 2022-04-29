@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,7 +10,13 @@ public class EnemyController : MonoBehaviour
     public GameObject play1;
     public GameObject play2;
     public GameObject enemy1;
+    public GameObject rayhit;
+    public GameObject t;
+    public GameObject s;
+    public GameObject text;
+    public Slider slider;
 
+    public float value = 0f;
     public float speed;//移动速度
     public float rotat;//旋转方向
     public bool isGround;//是否在地面
@@ -17,8 +24,8 @@ public class EnemyController : MonoBehaviour
     float angle = 90f;
     float angle2 = 90f;
     public float x, y;
-    public float timer = 3f;
-    public float time = 3f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,14 +33,55 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        Ray ray = new Ray(rayhit.transform.position, rayhit.transform.forward);
 
-        if (timer > time)
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            timer = 0f;
-            x = Random.Range(-1f, 1f);
-            y = Random.Range(-1f, 1f);
+            Debug.Log("检测到物体");
+
+            Debug.LogFormat("{0}", hit.collider.gameObject.tag);
+
+            if (hit.collider.gameObject.tag == "Player")
+            {
+                Debug.Log("检测到Player");
+                if (value < 1f)
+                {
+                    value += 0.002f;
+                }
+                if (value > 0.98f)
+                {
+                    GameOver();
+                }
+                speed = 0f;
+            }
+            else
+            {
+                speed = 1f;
+                if (value > 0f)
+                {
+                    value -= 0.0002f;
+                }
+            }
+            if (value > 0f)
+            {
+                t.SetActive(true);
+                s.SetActive(true);
+            }
+            else
+            {
+                t.SetActive(false);
+                s.SetActive(false);
+            }
+            slider.value = value;
         }
+        
+
+    }
+
+    private void GameOver()
+    {
+        text.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,18 +138,19 @@ public class EnemyController : MonoBehaviour
         var direction = play2.transform.position - transform.position;
         angle = 180f / Mathf.PI * Mathf.Asin(direction.y / direction.x);    
 
+        if (direction.x > 0.01f)
+        {                
+            enemy1.transform.localRotation = Quaternion.Euler(0, 90 - angle, 0);
+        }
+        if (direction.x < -0.01f)
+        {
+            enemy1.transform.localRotation = Quaternion.Euler(0, -90 - angle, 0);
+        } 
+        transform.Translate(direction.normalized * Time.deltaTime * 1.5f * speed, Space.World);
+
+/*
         if (flag == true )
-        {   
-     
-            if (direction.x > 0.01f)
-            {                
-                enemy1.transform.localRotation = Quaternion.Euler(0, 90 - angle, 0);
-            }
-            if (direction.x < -0.01f)
-            {
-                enemy1.transform.localRotation = Quaternion.Euler(0, -90 - angle, 0);
-            } 
-            transform.Translate(direction.normalized * Time.deltaTime * 1.5f * speed, Space.World);
+        { 
             if (direction.magnitude > 6f)
             {
                 flag = false;
@@ -124,6 +173,6 @@ public class EnemyController : MonoBehaviour
             {
                 flag = true;
             }
-        }
+        }*/
     }
 }
