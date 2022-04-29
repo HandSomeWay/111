@@ -19,7 +19,9 @@ public class ModeController : MonoBehaviour
     public Transform PB;
     public Transform PAT;
     public Transform PBT;
-    
+
+    public GameObject vectory;
+    public GameObject defeat;
     private void Start()
     {
         ModeX = true;
@@ -28,8 +30,15 @@ public class ModeController : MonoBehaviour
     }
     private void Update()
     {
-        if (Victory) Debug.Log("Victory!");
-        if (GameOver) Debug.Log("GameOver!");
+        if (Victory) { 
+            Debug.Log("Victory!");
+            vectory.SetActive(true);
+        }
+        if (GameOver)
+        {
+            Debug.Log("GameOver!");
+            defeat.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("GameMode Changed!");
