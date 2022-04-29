@@ -15,14 +15,14 @@ public class CameraChg : MonoBehaviour
     {
         if(ModeController.ModeX)
         {
-            this.gameObject.transform.position = new Vector3(10f, 0.5f, -1f);
-            this.gameObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+            this.gameObject.transform.position = new Vector3(0f, 1.25f, -1f);
+            this.gameObject.transform.localEulerAngles = new Vector3(15f, 0f, 0f);
 
         }
         else
         {
-            this.gameObject.transform.position = new Vector3(10f, -1, -1f);
-            this.gameObject.transform.localEulerAngles = new Vector3(-25f, 0f, 0f);
+            this.gameObject.transform.position = new Vector3(0f, 1, -1f);
+            this.gameObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
         }
     }
 }

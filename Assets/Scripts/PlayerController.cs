@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(!ModeController.GameOver)
         GroundMovement();
     }
     private void OnTriggerEnter(Collider other)
@@ -88,6 +89,7 @@ public class PlayerController : MonoBehaviour
     }
     void AnimationChg()
     {
+        Amt.SetBool("isGround", isGround);
         Amt.SetFloat("Speed", Mathf.Abs(rb1.velocity.x));
         Amt.SetFloat("Jump", rb1.velocity.y);
     }
