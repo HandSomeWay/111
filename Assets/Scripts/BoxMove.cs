@@ -9,7 +9,7 @@ public class BoxMove : MonoBehaviour
     void Start()
     {
         //获取组件
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -24,6 +24,21 @@ public class BoxMove : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.None;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Respawn")
+        {
+            other.transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Respawn")
+        {
+            other.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 }
