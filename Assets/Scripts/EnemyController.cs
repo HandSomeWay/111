@@ -129,6 +129,7 @@ public class EnemyController : MonoBehaviour
     {
         rb.useGravity = true;
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         enemy1.transform.rotation = Quaternion.Euler(0, rotat, 0);
         if (isGround)
         {
