@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class startcrene : MonoBehaviour
 {
     public GameObject obj;
+    public GameObject obj1;
 
     public void start()//开始游戏
     {
@@ -24,9 +25,11 @@ public class startcrene : MonoBehaviour
     public void proteam()//打开制作团队
     {
         obj.SetActive(true);
+        obj1.SetActive(false);
     }
     public void back()//关闭制作团队
     {
         obj.SetActive(false);
+        obj1.SetActive(true);
     }
 }
