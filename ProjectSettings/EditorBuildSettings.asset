@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 264e85e769bc27545b6c7d8756adead4
   - enabled: 1
     path: Assets/Scenes/Tech02.unity
-    guid: 8356790836ea6634a93d65f477e27476
+    guid: 4895cebd3b17f114f8c89020de3f206d
   - enabled: 1
     path: Assets/Scenes/Demo.unity
     guid: a4cf852120c6dfc41b491aefd6f33452

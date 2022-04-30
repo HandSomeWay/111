@@ -11,6 +11,7 @@ public class startcrene : MonoBehaviour
 
     public void start()//¿ªÊ¼ÓÎÏ·
     {
+        Debug.Log("start");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
