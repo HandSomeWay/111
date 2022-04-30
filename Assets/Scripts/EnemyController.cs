@@ -7,20 +7,22 @@ public class EnemyController : MonoBehaviour
 {
     Animator animator;
     private Rigidbody rb;
-    private bool flag = false;
+//    private bool flag = false;
+    private bool Move = true;
     public GameObject play1;
     public GameObject play2;
     public GameObject enemy1;
     public GameObject rayhit;
+    public GameObject light;
     public GameObject t;
     public GameObject s;
     public GameObject text;
     public Slider slider;
 
     public float value = 0f;
-    public float speed;//移动速度
-    public float rotat;//旋转方向
-    public bool isGround;//是否在地面
+    public float speed;
+    public float rotat;
+    public bool isGround;
     public float horizontalmove = 5f;
     float angle = 90f;
     float angle2 = 90f;
@@ -35,60 +37,58 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        Ray ray = new Ray(rayhit.transform.position, rayhit.transform.forward);
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        {
-            Debug.Log("检测到物体");
-
-            Debug.LogFormat("{0}", hit.collider.gameObject.tag);
-
-            if (hit.collider.gameObject.tag == "Player")
+        if (Move) {
+            Ray ray = new Ray(rayhit.transform.position, rayhit.transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                Debug.Log("检测到Player");
-                if (value < 1f)
+                //Debug.Log("检测到物体");
+                //Debug.LogFormat("{0}", hit.collider.gameObject.tag);
+                if (Move && hit.collider.gameObject.tag == "Player")
                 {
-                    value += 0.002f;
+                    Debug.Log("检测到Player");
+                    if (value < 1f)
+                    {
+                        value += 0.002f;
+                    }
+                    if (value > 0.98f)
+                    {
+                        //GameOver();
+                        ModeController.GameOver = true;
+                    }
+                    if ( ModeController.ModeX)
+                        speed = 0f;
+                    animator.ResetTrigger("find1");
+                    animator.SetTrigger("find");
                 }
-                if (value > 0.98f)
+                else
                 {
-                    GameOver();
+                    speed = 1f;
+                    animator.SetTrigger("find1");
+                    if (value > 0f)
+                    {
+                        value -= 0.0002f;
+                    }
                 }
-                if (ModeController.ModeX)
-                    speed = 0f;
-                animator.ResetTrigger("find1");
-                animator.SetTrigger("find");
-            }
-            else
-            {
-                speed = 1f;
-                animator.SetTrigger("find1");
                 if (value > 0f)
                 {
-                    value -= 0.0002f;
+                    t.SetActive(true);
+                    s.SetActive(true);
                 }
+                else
+                {
+                    t.SetActive(false);
+                    s.SetActive(false);
+                }
+                slider.value = value;
             }
-            if (value > 0f)
-            {
-                t.SetActive(true);
-                s.SetActive(true);
-            }
-            else
-            {
-                t.SetActive(false);
-                s.SetActive(false);
-            }
-            slider.value = value;
         }
-        
-
     }
 
-    private void GameOver()
+/*    private void GameOver()
     {
         text.SetActive(true);
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
@@ -97,8 +97,14 @@ public class EnemyController : MonoBehaviour
             if (other.tag == "Wall")
             {
                 horizontalmove = -horizontalmove;
-                rotat = -rotat;//移动速度
+                rotat = -rotat;
                 enemy1.transform.Rotate(new Vector3(0, 180, 0), Space.Self);
+            }
+            if (other.tag == "Trap")
+            {
+                animator.SetTrigger("Dead");
+                Move = false;
+                light.SetActive(false);
             }
         }
     }
@@ -115,14 +121,18 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (ModeController.ModeX)
+        if (Move)
         {
-            MoveMode1();
+            if (ModeController.ModeX)
+            {
+                MoveMode1();
+            }
+            else
+            {
+                MoveMode2();
+            }
         }
-        else
-        {
-            MoveMode2();
-        }
+
     }
 
     void MoveMode1()
@@ -154,32 +164,5 @@ public class EnemyController : MonoBehaviour
             enemy1.transform.localRotation = Quaternion.Euler(0, -90 - angle, 0);
         } 
         transform.Translate(direction.normalized * Time.deltaTime * 1.5f * speed, Space.World);
-
-/*
-        if (flag == true )
-        { 
-            if (direction.magnitude > 6f)
-            {
-                flag = false;
-            }
-        }
-        else
-        {
-            angle2 = 180f / Mathf.PI * Mathf.Asin(y / x);            
-            if (x > 0.01f)
-            {
-                enemy1.transform.localRotation = Quaternion.Euler(0, 90 - angle2, 0);
-            }
-            if (x < -0.01f)
-            {
-                enemy1.transform.localRotation = Quaternion.Euler(0, -90 - angle2, 0);
-            }
-            transform.Translate(0.01f * new Vector3(x, 0, y));
-
-            if (direction.magnitude < 3f)
-            {
-                flag = true;
-            }
-        }*/
     }
 }
