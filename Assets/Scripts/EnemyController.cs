@@ -5,29 +5,24 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    Animator animator;
+    private Animator animator;
     private Rigidbody rb;
-//    private bool flag = false;
-    private bool Move = true;
     public GameObject play1;
     public GameObject play2;
     public GameObject enemy1;
     public GameObject rayhit;
     public GameObject light;
-    public GameObject t;
-    public GameObject s;
     public GameObject text;
-    public Slider slider;
+    public GameObject slider;
+    public Slider slider1;
 
+    private bool Move = true;
     public float value = 0f;
     public float speed;
     public float rotat;
     public bool isGround;
     public float horizontalmove = 5f;
     float angle = 90f;
-    float angle2 = 90f;
-    public float x, y;
-
 
     void Start()
     {
@@ -42,8 +37,6 @@ public class EnemyController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                //Debug.Log("检测到物体");
-                //Debug.LogFormat("{0}", hit.collider.gameObject.tag);
                 if (Move && hit.collider.gameObject.tag == "Player")
                 {
                     Debug.Log("检测到Player");
@@ -53,11 +46,12 @@ public class EnemyController : MonoBehaviour
                     }
                     if (value > 0.98f)
                     {
-                        //GameOver();
                         ModeController.GameOver = true;
                     }
-                    if ( ModeController.ModeX)
+                    if (ModeController.ModeX)
+                    {
                         speed = 0f;
+                    }
                     animator.ResetTrigger("find1");
                     animator.SetTrigger("find");
                 }
@@ -72,23 +66,18 @@ public class EnemyController : MonoBehaviour
                 }
                 if (value > 0f)
                 {
-                    t.SetActive(true);
-                    s.SetActive(true);
+                    text.SetActive(true);
+                    slider.SetActive(true);
                 }
                 else
                 {
-                    t.SetActive(false);
-                    s.SetActive(false);
+                    text.SetActive(false);
+                    slider.SetActive(false);
                 }
-                slider.value = value;
+                slider1.value = value;
             }
         }
     }
-
-/*    private void GameOver()
-    {
-        text.SetActive(true);
-    }*/
 
     private void OnTriggerEnter(Collider other)
     {
@@ -108,6 +97,7 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Ground")
