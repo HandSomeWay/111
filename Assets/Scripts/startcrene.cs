@@ -18,7 +18,7 @@ public class startcrene : MonoBehaviour
 
     public void exit()//ÍË³ö
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
     
