@@ -39,21 +39,24 @@ public class PlayerController_B1 : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow)) dirVer = -1;
         if (Input.GetKey(KeyCode.RightArrow)) dirHor = 1;
         if (Input.GetKey(KeyCode.LeftArrow)) dirHor = -1;
-        if (dirHor == 0 && dirVer == -1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 180f));
-        if (dirHor == 0 && dirVer == 1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-        if (dirHor == -1 && dirVer == 0) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 90f));
-        if (dirHor == 1 && dirVer == 0) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -90f));
-        if (dirHor == 1 && dirVer == 1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -45f));
-        if (dirHor == 1 && dirVer == -1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -135f));
-        if (dirHor == -1 && dirVer == -1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 135f));
-        if (dirHor == -1 && dirVer == 1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 45f));
+
+        if (dirHor == -1 && dirVer == -1) transform.rotation = Quaternion.Euler(new Vector3(90f, -135f, 0f));
+        if (dirHor == -1 && dirVer == 0) transform.rotation = Quaternion.Euler(new Vector3(90f, -90f, 0f));
+        if (dirHor == -1 && dirVer == 1) transform.rotation = Quaternion.Euler(new Vector3(90f, -45f, 0f));
+        if (dirHor == 0 && dirVer == 1) transform.rotation = Quaternion.Euler(new Vector3(90f, 0f, 0f));
+        if (dirHor == 1 && dirVer == 1) transform.rotation = Quaternion.Euler(new Vector3(90f, 45f, 0f));
+        if (dirHor == 1 && dirVer == 0) transform.rotation = Quaternion.Euler(new Vector3(90f, 90f, 0f));
+        if (dirHor == 1 && dirVer == -1) transform.rotation = Quaternion.Euler(new Vector3(90f, 135f, 0f));
+        if (dirHor == 0 && dirVer == -1) transform.rotation = Quaternion.Euler(new Vector3(90f, 180f, 0f));
+
+
         if (dirHor != 0 || dirVer != 0) Amt.SetBool("Move", true);
         else Amt.SetBool("Move", false);
-        rb.velocity = new Vector3(dirHor * speed, dirVer*speed,rb.velocity.z);//ÒÆ¶¯
+        rb.velocity = new Vector3(dirHor * speed, 0, dirVer * speed);//ÒÆ¶¯
     }
     void AnimationChg()
     {
-        Amt.SetFloat("Speed", Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y));
+        Amt.SetFloat("Speed", Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z));
     }
     private void OnTriggerStay(Collider other)
     {
