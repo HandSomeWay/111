@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb1;
-    private Animator Amt;
+    public Animator Amt;
     public bool Crouch;
+    public GameObject imge1;
 
     public Collider capsule;
-    public GameObject Model_A;
     public float speed;//移动速度
     public float jumpForce;//跳跃的力
     public bool isGround;//是否在地面
@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
    {
         //获取组件
         rb1=GetComponent<Rigidbody>();
-        Amt = Model_A.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -32,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Crouch)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+            //transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
             speed = 2.5f;
         }
         else speed = 5f;
@@ -76,8 +75,8 @@ public class PlayerController : MonoBehaviour
         int dirHor = 0;
         if (Input.GetKey(KeyCode.A)) dirHor = -1;
         else if (Input.GetKey(KeyCode.D)) dirHor = 1;
-        if (dirHor == 1) transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-        if (dirHor == -1) transform.rotation = Quaternion.Euler(new Vector3(0f, -180f, 0f));
+        if (dirHor == 1) /*transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));*/imge1.transform.localScale = new Vector3(-1, 1, 1);
+        if (dirHor == -1) /*transform.rotation = Quaternion.Euler(new Vector3(0f, -180f, 0f));*/imge1.transform.localScale = new Vector3(1, 1, 1);
         if (dirHor != 0) Amt.SetBool("Move", true);
         else Amt.SetBool("Move", false);
         rb1.velocity = new Vector2(dirHor  * speed, rb1.velocity.y);//移动
