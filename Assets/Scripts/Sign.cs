@@ -5,39 +5,42 @@ using UnityEngine.UI;
 
 public class Sign : MonoBehaviour
 {
-    public Text dialogBox;
-    public GameObject image;
-    void Start()
+    public GameObject image1;
+    public GameObject image2;
+    public GameObject image3;
+    public GameObject image4;
+    public GameObject image5;
+    bool f1 = false, f2 = false, f3 = false, f4 = false, f5 = false;
+    private void Update()
     {
-        dialogBox.text = "快到我这来~按下A或D左右移动";
-    }
-    // Update is called once per frame
-    void Update()
-    {
-      
-    }
-    
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "NPC")
-        {
-            Debug.Log("Enter");
-            image.SetActive(true);
-            dialogBox.text = "试试按下J跳过箱子吧";
-            if (Input.GetKey(KeyCode.J))
-                dialogBox.text = "Bravo!";
-        }
 
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "NPC")
-        {
-            image.SetActive(false);
-            Debug.Log("Exit");
-            dialogBox.text = "";
+        if (!f1 && Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        { 
+            image1.SetActive(false);
+            image2.SetActive(true);
+            f1 = true;
         }
-
+        if(!f2 && Input.GetKeyDown(KeyCode.J))
+        {
+            image2.SetActive(false);
+            image3.SetActive(true);
+            f2 = true;
+        }
+        if(!f4 && Input.GetKeyDown(KeyCode.C))
+        {
+            image4.SetActive(false);
+            image5.SetActive(true);
+            f4 = true;
+        }
     }
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!f3 )
+        {
+            image3.SetActive(false);
+            image4.SetActive(true);
+            f3 = true;
+        }
+        
+    }
 }

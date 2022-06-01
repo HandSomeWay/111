@@ -13,8 +13,5 @@ EditorBuildSettings:
     guid: 264e85e769bc27545b6c7d8756adead4
   - enabled: 1
     path: Assets/Scenes/Teach02.unity
-    guid: 4895cebd3b17f114f8c89020de3f206d
-  - enabled: 1
-    path: Assets/Scenes/Demo(enemy test).unity
-    guid: 883e27d2bfd1b154caa46e446e1911f6
+    guid: 25bbb4f3c9b89074fbf94670d063cb20
   m_configObjects: {}

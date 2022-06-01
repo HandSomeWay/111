@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 3f;
+        speed = 1.5f;
         Crouch = false;
     }
     // Update is called once per frame
