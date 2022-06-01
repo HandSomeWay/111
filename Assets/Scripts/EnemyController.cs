@@ -84,7 +84,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "player1")
         {
             ModeController.GameOver = true;
         }
