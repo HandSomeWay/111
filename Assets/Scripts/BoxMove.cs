@@ -26,19 +26,5 @@ public class BoxMove : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Respawn")
-        {
-            other.transform.GetChild(0).gameObject.SetActive(false);
-        }
-
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Respawn")
-        {
-            other.transform.GetChild(0).gameObject.SetActive(true);
-        }
-    }
+    
 }

@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ModeController.GameOver)
+        {
+            Amt.SetTrigger("Dead");
+        }
         if(ModeController.Victory)
         {
             Amt.SetTrigger("Victory");
@@ -58,7 +62,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Trap")
         {
-            Amt.SetTrigger("Dead");
             ModeController.GameOver = true;
         }
     }

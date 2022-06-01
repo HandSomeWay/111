@@ -19,6 +19,10 @@ public class PlayerController_B : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ModeController.GameOver)
+        {
+            Amt.SetTrigger("Dead");
+        }
         if (ModeController.Victory) Amt.SetTrigger("Victory");
         if (Input.GetKeyDown(KeyCode.Z)) Interact();
         AnimationChg();
