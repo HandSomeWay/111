@@ -8,7 +8,7 @@ public class GameOver: MonoBehaviour
 {
     public void Home()
     {
-        SceneManager.LoadScene("WBY");
+        SceneManager.LoadScene(0);
      }
 
     public void Replay()
