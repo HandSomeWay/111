@@ -545,6 +545,7 @@ MonoBehaviour:
   image3: {fileID: 449823159}
   image4: {fileID: 445617591}
   image5: {fileID: 686246333}
+  UI: {fileID: 1911397988}
 --- !u!65 &316876955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1473,6 +1474,18 @@ PrefabInstance:
     - target: {fileID: 2470105278449978199, guid: 7278dffc875d8ad4c91f989db4922103, type: 3}
       propertyPath: m_Name
       value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017437595462216580, guid: 7278dffc875d8ad4c91f989db4922103, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017437595462216583, guid: 7278dffc875d8ad4c91f989db4922103, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952227047699495102, guid: 7278dffc875d8ad4c91f989db4922103, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7278dffc875d8ad4c91f989db4922103, type: 3}
@@ -3355,6 +3368,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2ab5764cb422bc4a98d0a60662838e2, type: 3}
+--- !u!1 &1911397988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8479310010348223517, guid: c11f3b2600cf4854c81fd09bfc31de45, type: 3}
+  m_PrefabInstance: {fileID: 1807583336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1924133313
 PrefabInstance:
   m_ObjectHideFlags: 0

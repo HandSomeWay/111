@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public GameObject text;
     public GameObject slider;
     public Slider slider1;
+    public GameObject UI;
 
     private bool Move = true;
     public float value = 0f;
@@ -33,6 +34,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (ModeController.GameOver || ModeController.Victory) UI.SetActive(false);
         if (Move && ModeController.ModeX) {
             Ray ray = new Ray(rayhit.transform.position, rayhit.transform.forward);
             RaycastHit hit;

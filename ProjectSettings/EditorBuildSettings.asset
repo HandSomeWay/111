@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Teach02.unity
     guid: 25bbb4f3c9b89074fbf94670d063cb20
+  - enabled: 1
+    path: Assets/Scenes/HSW.unity
+    guid: a0628af4673a9d341be30478d173c9db
   m_configObjects: {}
