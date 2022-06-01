@@ -23,18 +23,22 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 5f;
+        speed = 3f;
         Crouch = false;
     }
     // Update is called once per frame
     void Update()
     {
+        if(ModeController.Victory)
+        {
+            Amt.SetTrigger("Victory");
+        }
         if (Crouch)
         {
             //transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
-            speed = 2.5f;
+            speed = 1.5f;
         }
-        else speed = 5f;
+        else speed = 3f;
             if (Input.GetKeyDown(KeyCode.C))
         {
             Crouch = !Crouch;

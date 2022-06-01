@@ -10,6 +10,7 @@ public class ModeController : MonoBehaviour
 
     private int i;
 
+    public Animator amt;
     public Light SunLight;
     public GameObject PlayerA;
     public GameObject PlayerB;
@@ -32,6 +33,7 @@ public class ModeController : MonoBehaviour
     {
         if (Victory) { 
             Debug.Log("Victory!");
+            amt.SetTrigger("Victory");
             vectory.SetActive(true);
         }
         if (GameOver)

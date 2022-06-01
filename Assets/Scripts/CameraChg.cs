@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CameraChg : MonoBehaviour
 {
-    public GameObject mdA;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +41,6 @@ public class CameraChg : MonoBehaviour
         {
             this.gameObject.transform.position = new Vector3(0f, 1f - p * i, -10f);
             this.gameObject.transform.localEulerAngles = new Vector3(-r * i, 0f, 0f);
-            mdA.gameObject.transform.localEulerAngles = new Vector3(-r * i, 0f, 0f);
             yield return new WaitForSeconds(0.1f);
         }
         yield return null;
@@ -54,7 +52,6 @@ public class CameraChg : MonoBehaviour
         {
             this.gameObject.transform.position = new Vector3(0f, -3f + p * i, -10f);
             this.gameObject.transform.localEulerAngles = new Vector3(-22f+ r * i, 0f, 0f);
-            mdA.gameObject.transform.localEulerAngles = new Vector3(-22f + r * i, 0f, 0f);
             yield return new WaitForSeconds(0.1f);
         }
         yield return null;
