@@ -19761,6 +19761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 5017437595462216580, guid: 7278dffc875d8ad4c91f989db4922103, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5017437595462216581, guid: 7278dffc875d8ad4c91f989db4922103, type: 3}
       propertyPath: speed
       value: 3
